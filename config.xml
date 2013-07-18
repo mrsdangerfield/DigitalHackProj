@@ -3,13 +3,13 @@
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.phonegap.hello-world"
+        id        = "com.Digital-fight-club"
         version   = "1.0.0">
 
     <name>digital fight club stuff</name>
 
     <description>
-        test test tests 
+        A digital solution for the brief given by digital fightclub
     </description>
 
     <author href="" email="jade.brookes@iris-worldwide.com">
