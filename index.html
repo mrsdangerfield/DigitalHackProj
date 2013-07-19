@@ -6,7 +6,8 @@
 <head>
     <meta charset="UTF-8">
         <meta charset="utf-8" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0" />
+
         <title>Test</title>
 
         <link href="css/normalize.css" media="screen, projection" rel="stylesheet" type="text/css" />
@@ -18,33 +19,29 @@
     <body>
         <div class="container">
             <div class="main">
-              <h2>Device Motion</h2>
-              <table>
+            <h2>Device Orientation</h2>
+                <table>
                 <tr>
-                  <td>Event Supported</td>
-                  <td id="dmEvent"></td>
+                <td>Event Supported</td>
+                <td id="doEvent"></td>
                 </tr>
                 <tr>
-                  <td>acceleration</td>
-                  <td id="moAccel"></td>
+                <td>Tilt Left/Right [gamma]</td>
+                <td id="doTiltLR"></td>
                 </tr>
                 <tr>
-                  <td>accelerationIncludingGravity</td>
-                  <td id="moAccelGrav"></td>
+                <td>Tilt Front/Back [beta]</td>
+                <td id="doTiltFB"></td>
                 </tr>
                 <tr>
-                  <td>rotationRate</td>
-                  <td id="moRotation"></td>
+                <td>Direction [alpha]</td>
+                <td id="doDirection"></td>
                 </tr>
-                <tr>
-                  <td>interval</td>
-                  <td id="moInterval"></td>
-                </tr>
-              </table>
+                </table>
             </div>
         </div>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="scripts/jquery-1.8.2.min.js"><\/script>')</script>
-        
+        <script src="scripts/main.js"></script>
     </body>
 </html>
