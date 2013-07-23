@@ -6,7 +6,10 @@
     var $window = $(window),
         $document = $(document),
         $body = $(document.body),
+        trackNumber = "",
         JumpandJam = JumpandJam || {};
+
+
 
     /** 
     * Initialisation (DOM ready)
@@ -20,40 +23,90 @@
 
     JumpandJam.initialise = function () {
 
-        this.counter();
+        this.trackPlayer();
 
-    };
-
-    JumpandJam.counter = function () {
-
-        //fix device orientation
-
-        //listen for motion
-        /*window.addEventListener('devicemotion', function (e) {
-            ax = e.accelerationIncludingGravity.x * sensitivity;
-            ay = -e.accelerationIncludingGravity.y * sensitivity;
-        }, false);*/
-
-        var count=0;
-        if(window.DeviceOrientationEvent){
-            document.getElementById("doEvent").innerHTML="DeviceOrientation";
-            window.addEventListener('deviceorientation',function(eventData){
-                var tiltLR=eventData.gamma;
-                var tiltFB=eventData.beta;
-                var dir=eventData.alpha
-                deviceOrientationHandler(tiltLR,tiltFB,dir);},false);
+        if ($body.hasClass('game')){
+            this.preloadGame();
         }
         else{
-            document.getElementById("doEvent").innerHTML="Not supported on your device or browser.  Sorry."}
+            console.log('failed');
         }
-        function deviceOrientationHandler(tiltLR,tiltFB,dir){
-            document.getElementById("doTiltLR").innerHTML=Math.round(tiltLR);
-            document.getElementById("doTiltFB").innerHTML=Math.round(tiltFB);
-            document.getElementById("doDirection").innerHTML=Math.round(dir);
-            //var logo=document.getElementById("imgLogo");logo.style.webkitTransform="rotate("+tiltLR+"deg) rotate3d(1,0,0, "+(tiltFB*-1)+"deg)";logo.style.MozTransform="rotate("+tiltLR+"deg)";logo.style.transform="rotate("+tiltLR+"deg) rotate3d(1,0,0, "+(tiltFB*-1)+"deg)";}
-        console.log("logging info");
 
     };
+
+    JumpandJam.trackPlayer = function () {
+
+
+        // what track has been selected
+        $('.track-listing li').on('click', function(){
+
+            console.log($(this).attr('data-track'));
+
+            //save track in variable
+            trackNumber = $(this).attr('data-track');
+            console.log(trackNumber);
+
+            window.location = 'game-screen.html?track=' + trackNumber;
+        });
+
+
+        //$('audio-mp3').attr('src', '$trackNumber');
+    };
+
+    /**
+     * Function preloads the game
+     */
+    JumpandJam.preloadGame = function() {
+        /*var self = this;
+
+        this.elems.$loadingBar.animate({
+            'width': 430
+        }, 8000, function() {
+            $body.removeClass('loading');
+            $('#loading-mask').fadeOut('600');
+
+        });*/
+
+        console.log('ran preload');
+
+        var qs = (function(a) {
+            if (a == "") return {};
+            var b = {};
+            for (var i = 0; i < a.length; ++i)
+            {
+                var p=a[i].split('=');
+                if (p.length != 2) continue;
+                b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+            }
+            return b;
+        })(window.location.search.substr(1).split('&'));
+
+        var trackPath = qs["track"];
+
+        if (trackPath = "track1"){
+            $('iframe#track').attr('src', 'track1.html');
+        }
+        else if (trackPath = "track2"){
+            $('iframe#track').attr('src', 'track1.html');
+        }
+        else if (trackPath = "track3"){
+            $('iframe#track').attr('src', 'track1.html');
+        }
+        else if (trackPath = "track4"){
+            $('iframe#track').attr('src', 'track1.html');
+        }
+        else if (trackPath = "track5"){
+            $('iframe#track').attr('src', 'track1.html');
+        }
+
+
+        
+
+
+    };
+
+    
+
 
     window.JumpandJam = JumpandJam;
 
